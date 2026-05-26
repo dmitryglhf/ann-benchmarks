@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import numpy as np
 from edda import IndexFlat
 
-from ann_benchmarks.algorithms.base import BaseANN
+from ..base.module import BaseANN
 
 
 class Edda(BaseANN):
@@ -14,7 +14,7 @@ class Edda(BaseANN):
 
         # Edda поддерживает "l2" и "cosine"
         if metric == "euclidean":
-            self.edda_metric = "l2"
+            self.edda_metric = "euclid"
         elif metric in ["angular", "cosine"]:
             self.edda_metric = "cosine"
         else:
@@ -31,10 +31,10 @@ class Edda(BaseANN):
     def query(self, v, k):
         v = np.array([v], dtype=np.float32)
         result = self.index.search(v, k)
-        return result.ids[0].tolist()  # возвращаем список индексов
+        return result.ids[0].tolist()
 
     def set_query_arguments(self, **kwargs):
-        pass  # у IndexFlat пока нет параметров поиска
+        pass
 
     def __str__(self):
         return f"Edda(metric={self.metric})"

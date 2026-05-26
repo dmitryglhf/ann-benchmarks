@@ -1,13 +1,12 @@
-disabled: false
-build:
-  - python
-  - edda
-
-name: Edda
-type: edda
-
-params:
-  - {}
-
-search_params:
-  - {}
+float:
+  any:
+  - base_args: ['@metric']
+    constructor: Edda
+    disabled: false
+    docker_tag: ann-benchmarks-edda
+    module: ann_benchmarks.algorithms.edda
+    name: edda
+    run_groups:
+      edda:
+        args: []
+        query_args: []
