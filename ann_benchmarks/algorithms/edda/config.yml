@@ -1,0 +1,13 @@
+disabled: false
+build:
+  - python
+  - edda
+
+name: Edda
+type: edda
+
+params:
+  - {}
+
+search_params:
+  - {}
